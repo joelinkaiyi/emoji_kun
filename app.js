@@ -270,31 +270,11 @@ bot.on("message", function (event) {
         .catch(function (error) {});
     })();
   }
-  function kktv() {
-    (async () => {
-      const browser = await puppeteer.launch({
-        headless: false,
-      });
-      const page = await browser.newPage();
-      await page.goto("https://kktv.me/titleList/ranking");
-      // await page.waitForSelector('#__next > div:nth-child(1) > div.layout > main > div > div.sc-9da1d5dc-3.hSxxBn > div > div:nth-child(2) > div.block-list__main-container > div:nth-child(1) > div > div.cover-view__desc');
-      // await page.waitForSelector('#__next > div:nth-child(1) > div.layout > main > div > div.sc-9da1d5dc-3.hSxxBn > div > div:nth-child(2) > div.block-list__main-container > div:nth-child(2) > div > div.cover-view__desc')
-      const get = await page.$$eval("#desc-title", (divs) => divs.length);
-      const result = await page.$$eval("desc-title", (get) => {
-        return get.map((get) => get.textContent);
-      });
-      console.log(result);
-      await browser.close();
-      event
-        .reply(result)
-        .then(function (data) {})
-        .catch(function (error) {});
-    })();
-  }
+
   function translate(str) {
     let browser;
     (async () => {
-      browser = await puppeteer.launch({ headless: false });
+      browser = await puppeteer.launch({ headless: true });
       const [page] = await browser.pages();
       await page.goto("https://translate.google.com");
       await page.type(".er8xn", str);
@@ -319,7 +299,7 @@ bot.on("message", function (event) {
   function google_map(start, end) {
     let browser;
     (async () => {
-      browser = await puppeteer.launch({ headless: false });
+      browser = await puppeteer.launch({ headless: true });
       const [page] = await browser.pages();
       await page.goto(
         "https://www.google.com.tw/maps/dir///@24.1583379,120.6545017,15zn"
