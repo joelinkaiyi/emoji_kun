@@ -331,7 +331,7 @@ bot.on("message", function (event) {
           setTimeout(resolve, time);
         });
       }
-      await delay(3000);
+      await delay(7000);
 
       let get_url = page.mainFrame().url();
 
