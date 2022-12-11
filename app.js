@@ -1,6 +1,6 @@
 const puppeteer = require("puppeteer");
 const cheerio = require("cheerio");
-const { join } = require("path");
+
 const prefix = "&";
 const linebot = require("linebot");
 const { get } = require("request");
@@ -8,9 +8,6 @@ const { request } = require("https");
 const url = require("url");
 const http = require("http");
 const util = require("util");
-module.exports = {
-  cacheDirectory: join(__dirname, ".cache", "puppeteer"),
-};
 const bot = linebot({
   channelId: "1657546275",
   channelSecret: "2047c6d7dc76857227b58f9ef9ce52bd",
@@ -270,7 +267,27 @@ bot.on("message", function (event) {
         .catch(function (error) {});
     })();
   }
-
+  function kktv() {
+    (async () => {
+      const browser = await puppeteer.launch({
+        headless: true,
+      });
+      const page = await browser.newPage();
+      await page.goto("https://kktv.me/titleList/ranking");
+      // await page.waitForSelector('#__next > div:nth-child(1) > div.layout > main > div > div.sc-9da1d5dc-3.hSxxBn > div > div:nth-child(2) > div.block-list__main-container > div:nth-child(1) > div > div.cover-view__desc');
+      // await page.waitForSelector('#__next > div:nth-child(1) > div.layout > main > div > div.sc-9da1d5dc-3.hSxxBn > div > div:nth-child(2) > div.block-list__main-container > div:nth-child(2) > div > div.cover-view__desc')
+      const get = await page.$$eval("#desc-title", (divs) => divs.length);
+      const result = await page.$$eval("desc-title", (get) => {
+        return get.map((get) => get.textContent);
+      });
+      console.log(result);
+      await browser.close();
+      event
+        .reply(result)
+        .then(function (data) {})
+        .catch(function (error) {});
+    })();
+  }
   function translate(str) {
     let browser;
     (async () => {
