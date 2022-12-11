@@ -1,4 +1,4 @@
-const puppeteer = require("puppeteer");
+const puppeteer = require("./puppeteer.config.cjs");
 const cheerio = require("cheerio");
 const { join } = require("path");
 const prefix = "&";
