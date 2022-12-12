@@ -26,6 +26,7 @@ bot.on("message", function (event) {
     (async () => {
       const browser = await puppeteer.launch({
         headless: true,
+        args: ['--no-sandbox', '--disable-setuid-sandbox'],
       });
       const page = await browser.newPage();
       await page.goto("https://www.cwb.gov.tw/V8/C/E/index.html");
@@ -98,6 +99,7 @@ bot.on("message", function (event) {
     (async () => {
       const browser = await puppeteer.launch({
         headless: true,
+        args: ['--no-sandbox', '--disable-setuid-sandbox'],
       });
       const page = await browser.newPage();
       await page.goto(url);
@@ -204,6 +206,7 @@ bot.on("message", function (event) {
     (async () => {
       const browser = await puppeteer.launch({
         headless: true,
+        args: ['--no-sandbox', '--disable-setuid-sandbox'],
       });
       const page = await browser.newPage();
       await page.goto(url);
@@ -277,7 +280,7 @@ bot.on("message", function (event) {
   function translate(str) {
     let browser;
     (async () => {
-      browser = await puppeteer.launch({ headless: true });
+      browser = await puppeteer.launch({ headless: true,args: ['--no-sandbox', '--disable-setuid-sandbox'], });
       const [page] = await browser.pages();
       await page.goto("https://translate.google.com");
       await page.type(".er8xn", str);
@@ -302,7 +305,7 @@ bot.on("message", function (event) {
   function google_map(start,end) {
     let browser;
     (async () => {
-      browser = await puppeteer.launch({ headless: true });
+      browser = await puppeteer.launch({ headless: true,args: ['--no-sandbox', '--disable-setuid-sandbox'], });
       const [page] = await browser.pages();
       await page.goto("https://www.google.com.tw/maps/dir///@24.1583379,120.6545017,15zn");
       await page.waitForSelector('#sb_ifc50 > input')
