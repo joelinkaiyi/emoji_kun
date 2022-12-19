@@ -425,7 +425,7 @@ bot.on("message", function (event) {
      }
       await browser.close();
       
-    })();z
+    })();
   }
 function cmd(){
   event.reply('&地震：查詢最近一筆地震資料。'+
