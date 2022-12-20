@@ -713,8 +713,6 @@ function drama(){
  
   
 });
-
-module.exports=router
 app.post('/',linebot_parser)
 // Bot所監聽的webhook路徑與port
 app.listen(process.env.PORT || 3000, () => {
