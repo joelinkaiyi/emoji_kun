@@ -333,7 +333,7 @@ bot.on("message", function (event) {
   function bill(text,second_text,third_text,fourth_text,fifth_text,sixth_text){
     (async () => {
       const browser = await puppeteer.launch({
-        headless:false,
+        headless:true,
         args: ['--no-sandbox', '--disable-setuid-sandbox'],
       });
       const page = await browser.newPage();
