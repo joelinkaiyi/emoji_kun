@@ -416,7 +416,7 @@ function cmd(){
 }
 async function netflix() {
   let browser;
-    browser = await puppeteer.launch({ headless: false,args: ['--no-sandbox', '--disable-setuid-sandbox'], });
+    browser = await puppeteer.launch({ headless:true,args: ['--no-sandbox', '--disable-setuid-sandbox'], });
     const [page] = await browser.pages();
     await page.goto("https://top10.netflix.com/taiwan/tv");
     page.waitForXPath("/html/body/div[1]/div/main/section[2]/div/div[5]/div/div[1]/div/table/tbody/tr[1]/td[2]")
