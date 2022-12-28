@@ -450,7 +450,7 @@ async function netflix() {
     const item10=await page.$x('/html/body/div[1]/div/main/section[2]/div/div[5]/div/div[1]/div/table/tbody/tr[10]/td[2]')
     let f10=await item10[0].evaluate(x=>x.textContent)
     event.reply('Netflix週排行榜前10名:'+'\n'+'1.'+f1+'\n'+'\n'+'2.'+f2+'\n'+'\n'+'3.'+f3+'\n'+'\n'+'4.'+f4+'\n'+'\n'+'5.'+f5+'\n'+'\n'+'6.'+f6+'\n'+'\n'+'7.'+f7+'\n'+'\n'+'8.'+f8+'\n'+'\n'+'9.'+f9+'\n'+'\n'+'10.'+f10)	
-    await browser.close();
+   
 }
 
 
