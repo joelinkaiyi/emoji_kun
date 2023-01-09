@@ -404,18 +404,7 @@ bot.on("message", function (event) {
       
    
   }
-function cmd(){
-  event.reply('&地震：查詢最近一筆地震資料。'+
-  '\n'+'================================'+'\n'
-  +'&(縣市)可查詢當地天氣預報資料。ex:&台北'+'\n'
-  +'================================'+'\n'+
-  '&(星座)可查詢當天星座運勢資料。ex:&牡羊座'+'\n'+
-  '&翻譯+(要翻譯的文字)可以使用翻譯功能。ex:&翻譯 你好'+'\n'
-  +'================================'+'\n'+'&map+(起點)到(終點)可以使用google map功能。ex:&map 台中火車站到台北101'+'\n'
-  +'===================================='+'&發票+(發票的八個數字)可以啟用發票兌獎功能'+'\n'+'========================='+'\n'
-  +'&指令：查詢機器人的指令'
-  )
-}
+
 async function netflix() {
   let browser;
     browser = await puppeteer.launch({ headless: true,args: ['--no-sandbox', '--disable-setuid-sandbox'], });
@@ -444,76 +433,11 @@ async function netflix() {
     return event.reply("Netflix週排行榜:"+'\n'+dramas.map((x, i) => `${i + 1}. ${x}`).join("\n"))
  
 }
-async function kkbox() {
-  const browser = await puppeteer.launch({ 
-      headless: false,
-      args: ['--no-sandbox', '--disable-setuid-sandbox'],
-  })
-
-  const [page] = await browser.pages()
-  
-  await page.goto('https://kma.kkbox.com/charts/weekly/song?terr=tw&lang=tc&cate=308%27')
-  
-  let songs = []
-
-  for(let i = 2; i <= 31; i++) {
-      const path = `/html/body/div[3]/div/div[2]/ul/li[${i}]/a/div/div[1]/span[1]/span[1]`
-
-      await page.waitForXPath(path)
-
-      const result = await page.$x(path)
-      const jao = await result[0].evaluate(x => x.textContent)
-
-      console.log(jao)
-
-      songs.push(jao)
-  }
-  function delay(time) {
-    return new Promise(function(resolve) { 
-        setTimeout(resolve, time)
-    });
-  }
   await delay(1000)
   await browser.close()
   return event.reply("kkbox日語歌曲週排行榜:"+'\n'+songs.map((x, i) => `${i + 1}. ${x}`).join("\n"))
   
 }
-async function youtube(video){
- const browser = await puppeteer.launch({ 
-      headless:true,
-      args: ['--no-sandbox', '--disable-setuid-sandbox'],
-  })
-
-  const [page] = await browser.pages()
-  function delay(time) {
-    return new Promise(function(resolve) { 
-        setTimeout(resolve, time)
-    });
-  }
-  await page.goto('https://www.youtube.com/')
-  const you_path=await page.$x('/html/body/ytd-app/div[1]/div/ytd-masthead/div[3]/div[2]/ytd-searchbox/form/div[1]/div[1]/input')
-  await you_path[0].type(video)
-  await delay(500)
- await page.waitForSelector('#search-icon-legacy')
- await page.click('#search-icon-legacy')
- await delay(1000)
-  let go_url=page.mainFrame().url();
-  await page.goto(go_url);  
-const path=`/html/body/ytd-app/div[1]/ytd-page-manager/ytd-search/div[1]/ytd-two-column-search-results-renderer/div[2]/div/ytd-section-list-renderer/div[2]/ytd-item-section-renderer/div[3]/ytd-video-renderer[1]/div[1]/div/div[1]/div/h3/a/yt-formatted-string `
-await page.waitForXPath(path);
-const you=await page.$x(path)
-await you[0].click();
-
-await delay(1000)
-  let return_url=page.mainFrame().url()
-  event.reply(return_url);
-
- 
- await browser.close();
-  
-}
-
-
   switch (event.message.text) {
     case prefix + "地震":
       earthquake();
@@ -726,12 +650,7 @@ await delay(1000)
     console.log(text,second_text,third_text,fourth_text,fifth_text,sixth_text)
     bill(text,second_text,third_text,fourth_text,fifth_text,sixth_text)
   }
-  let preyou=prefix+'youtube'
-if(event.message.text.includes(preyou)){
-  let text=event.message.text.replace(preyou,'');
- 
-  youtube(text)
-}
+
   
 });
 app.post('/',linebot_parser)
