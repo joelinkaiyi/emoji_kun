@@ -433,9 +433,7 @@ async function netflix() {
     return event.reply("Netflix週排行榜:"+'\n'+dramas.map((x, i) => `${i + 1}. ${x}`).join("\n"))
  
 }
-  await delay(1000)
-  await browser.close()
-  return event.reply("kkbox日語歌曲週排行榜:"+'\n'+songs.map((x, i) => `${i + 1}. ${x}`).join("\n"))
+
   
 }
   switch (event.message.text) {
