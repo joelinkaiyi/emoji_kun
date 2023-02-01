@@ -478,12 +478,11 @@ await delay(1000)
  await browser.close();
   
 }
-
-
-  switch (event.message.text) {
-    case prefix + "地震":
-      earthquake();
-      break;
+	let ph=prefix+'h'
+if(event.message.text.includes(){
+   let horscope=event.message.text.replace(ph,'')
+     switch (horscope) {
+    
     case prefix + "水瓶座":
       luck("水瓶座", "https://astro.click108.com.tw/daily_10.php?iAstro=10");
       break;
@@ -534,20 +533,19 @@ await delay(1000)
         "魔羯座",
         "https://astro.click108.com.tw/daily_9.php?iAcDay=2022-11-28&iAstro=9"
       );
-      break;
- case prefix+'n':
-  netflix()
-  break;
-  case prefix+'kkbox':
-    kkbox();
-    break;
   }
+   if(event.message.text===prefix+'n'){
+	   netflix();
+   }
+if(event.message.text===prefix+'kkbox'){
+	kkbox();
+
   let preWeather=prefix+'w'
 	if(event.message.text.includes(preWeather)){
 		message=event.message.text.replace(preWeather,'').trim()
 		getWeather(message)
 	}
-  let subprefix=prefix+'翻譯'
+  let subprefix=prefix+'t'
   if(event.message.text.includes(subprefix)==true){
   let text=event.message.text.replace(subprefix,'')
   translate(text);
