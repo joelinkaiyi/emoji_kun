@@ -97,7 +97,7 @@ bot.on("message", function (event) {
   }
   async function getWeather(type){
 		const browser = await puppeteer.launch({
-			headless: false,
+			headless: true,
 			args: ['--no-sandbox', '--disable-setuid-sandbox'],
 		  });
 		  const page = await browser.newPage();
