@@ -533,13 +533,15 @@ if(event.message.text.includes(ph)){
         "魔羯座",
         "https://astro.click108.com.tw/daily_9.php?iAcDay=2022-11-28&iAstro=9"
       );
+      break;
+  }
   }
    if(event.message.text===prefix+'n'){
 	   netflix();
    }
 if(event.message.text===prefix+'kkbox'){
 	kkbox();
-
+}
   let preWeather=prefix+'w'
 	if(event.message.text.includes(preWeather)){
 		message=event.message.text.replace(preWeather,'').trim()
