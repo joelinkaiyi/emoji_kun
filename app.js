@@ -479,7 +479,7 @@ await delay(1000)
   
 }
 	let ph=prefix+'h'
-if(event.message.text.includes(){
+if(event.message.text.includes(ph)){
    let horscope=event.message.text.replace(ph,'')
      switch (horscope) {
     
