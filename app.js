@@ -548,40 +548,6 @@ bot.on("message", function (event) {
         songs.map((x, i) => `${i + 1}. ${x}`).join("\n")
     );
   }
-  async function youtube(video) {
-    const browser = await puppeteer.launch({
-      headless: true,
-      args: ["--no-sandbox", "--disable-setuid-sandbox"],
-    });
-
-    const [page] = await browser.pages();
-    function delay(time) {
-      return new Promise(function (resolve) {
-        setTimeout(resolve, time);
-      });
-    }
-    await page.goto("https://www.youtube.com/");
-    const you_path = await page.$x(
-      "/html/body/ytd-app/div[1]/div/ytd-masthead/div[3]/div[2]/ytd-searchbox/form/div[1]/div[1]/input"
-    );
-    await you_path[0].type(video);
-    await delay(500);
-    await page.waitForSelector("#search-icon-legacy");
-    await page.click("#search-icon-legacy");
-    await delay(1000);
-    let go_url = page.mainFrame().url();
-    await page.goto(go_url);
-    const path = `/html/body/ytd-app/div[1]/ytd-page-manager/ytd-search/div[1]/ytd-two-column-search-results-renderer/div[2]/div/ytd-section-list-renderer/div[2]/ytd-item-section-renderer/div[3]/ytd-video-renderer[1]/div[1]/div/div[1]/div/h3/a/yt-formatted-string `;
-    await page.waitForXPath(path);
-    const you = await page.$x(path);
-    await you[0].click();
-
-    await delay(1000);
-    let return_url = page.mainFrame().url();
-    event.reply(return_url);
-
-    await browser.close();
-  }
   let ph = prefix + "h";
   if (event.message.text.includes(ph)) {
     let horscope = event.message.text.replace(ph, "");
@@ -651,7 +617,7 @@ bot.on("message", function (event) {
     let result_b = re_1.replace(result_a + "到", "");
     google_map(result_a, result_b);
   }
-  let prebill = prefix + "發票";
+  let prebill = prefix + "b";
   if (event.message.text.includes(prebill)) {
     let text = event.message.text.replace(prebill, "");
     let second_text = text.slice(2, 9);
@@ -669,9 +635,13 @@ bot.on("message", function (event) {
     );
     bill(text, second_text, third_text, fourth_text, fifth_text, sixth_text);
   }
+  if (event.message.text === prefix + "e") {
+    earthquake();
+  }
 });
 app.post("/", linebot_parser);
 // Bot所監聽的webhook路徑與port
 app.listen(process.env.PORT || 3000, () => {
   console.log("Bot is now online");
 });
+
