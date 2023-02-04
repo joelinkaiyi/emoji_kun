@@ -10,8 +10,8 @@ const axios = require("axios");
 const { type } = require('os');
 const { text } = require('body-parser');
 const config = {
-  channelAccessToken:'8CBpKDc7zV5c358csuwNMh5sEWZELjkXEMTjehR2QscFQwRUHn0QUZp8FxkqlUyRHsoU2DpdhCBe3bI1kbwPxhCHRRUGTi0Z24GSkXhbK1HoUEs0D428ZrLvf9S/QMbzLighqWu/8qFxAFWLV/TExgdB04t89/1O/w1cDnyilFU=',
-  channelSecret:'2047c6d7dc76857227b58f9ef9ce52bd',
+  channelAccessToken:'ImqXwkfn8xKOq9R9wj7yCaPBIzK3SR9+mKNUH4FDI35XMqeQeD9hpZD6tg0IthitOITqrjTnst/J1yglV6J4WTeMxmHyQck9bzeOJ8+dXUmQ8jCYec8S8kaO/nniwQNQhmh57cHlxfyeHxpoXOVGLAdB04t89/1O/w1cDnyilFU=',
+  channelSecret:'2cbe3d3fb6620db86568f0b431710e83',
 };
 
 const client = new line.Client(config);
@@ -19,7 +19,7 @@ const bot =new line.Client(config);
 
 const app = express();
 
-app.post('/callback', line.middleware(config), (req, res) => {
+app.post('/emoji', line.middleware(config), (req, res) => {
   Promise
     .all(req.body.events.map(handleEvent))
     .then((result) => res.json(result))
