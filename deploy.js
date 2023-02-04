@@ -248,15 +248,14 @@ const getTaiwanWeather = async () => {
   
   return weatherData;
   };
-  function getWeather(){
-    getTaiwanWeather().then(weatherData => {
+  if(message===prefix+w){
+     getTaiwanWeather().then(weatherData => {
       let message = '';
       weatherData.forEach(weather => {
       message +=` ${weather.city}: 今天天氣：${weather.weather}，溫度：${weather.temperature}°C\n`;
       });
       client.pushMessage(userId, { type: 'text', text: message });
       }); 
-      
     }
 
 
