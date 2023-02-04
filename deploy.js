@@ -276,7 +276,6 @@ const getTaiwanWeather = async () => {
   getProfile();
   earthquake();
   translate();
-  getWeather();
   netflix();
   getGroupid();
   leaveGroup();
