@@ -11,7 +11,7 @@ const { type } = require('os');
 const { text } = require('body-parser');
 const config = {
   channelAccessToken:'8CBpKDc7zV5c358csuwNMh5sEWZELjkXEMTjehR2QscFQwRUHn0QUZp8FxkqlUyRHsoU2DpdhCBe3bI1kbwPxhCHRRUGTi0Z24GSkXhbK1HoUEs0D428ZrLvf9S/QMbzLighqWu/8qFxAFWLV/TExgdB04t89/1O/w1cDnyilFU=',
-  channelSecret:'2047c6d7dc76857227b58f9ef9ce52bd',
+  channelSecret:'2cbe3d3fb6620db86568f0b431710e83',
 };
 
 const client = new line.Client(config);
