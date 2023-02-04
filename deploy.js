@@ -10,7 +10,7 @@ const axios = require("axios");
 const { type } = require('os');
 const { text } = require('body-parser');
 const config = {
-  channelAccessToken:'8CBpKDc7zV5c358csuwNMh5sEWZELjkXEMTjehR2QscFQwRUHn0QUZp8FxkqlUyRHsoU2DpdhCBe3bI1kbwPxhCHRRUGTi0Z24GSkXhbK1HoUEs0D428ZrLvf9S/QMbzLighqWu/8qFxAFWLV/TExgdB04t89/1O/w1cDnyilFU=',
+  channelAccessToken:'ImqXwkfn8xKOq9R9wj7yCaPBIzK3SR9+mKNUH4FDI35XMqeQeD9hpZD6tg0IthitOITqrjTnst/J1yglV6J4WTeMxmHyQck9bzeOJ8+dXUmQ8jCYec8S8kaO/nniwQNQhmh57cHlxfyeHxpoXOVGLAdB04t89/1O/w1cDnyilFU=',
   channelSecret:'2cbe3d3fb6620db86568f0b431710e83',
 };
 
@@ -246,7 +246,7 @@ async function getTaiwanWeather() {
     const weather = response.data.weather[0].main;
     const temperature = response.data.main.temp - 273.15;
 
-    return `天气：${weather}，温度：${temperature}°C`;
+    return `天氣：${weather}，温度：${temperature}°C`;
   } catch (error) {
     console.error(error);
     return 'error';
