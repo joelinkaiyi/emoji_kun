@@ -1,4 +1,5 @@
 &info:查詢使用者資料
+&botinfo:查詢此機器人資料
 &w:查詢全台天氣
 &n:查詢Netflix週排行榜
 &a ${task}:新增工作到todo-list
