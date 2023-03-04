@@ -602,7 +602,7 @@ function handleEvent(event) {
   netflix();
   getGroupid();
   autoWeather();
-  google_news();
+  pushTopNews();
   news_search();
 }
 const port = process.env.PORT || 3000;
